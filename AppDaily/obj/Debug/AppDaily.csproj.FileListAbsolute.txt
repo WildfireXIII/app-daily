@@ -11,5 +11,7 @@ C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\values\strings.xml
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\drawable\icon.png
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\R.cs.flag
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\uploadflags.txt
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.dll.mdb
 C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.dll.mdb

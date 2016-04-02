@@ -5,5 +5,7 @@ C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.Core.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.Xml.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.Xml.Linq.dll
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\Xamarin.Android.Support.v4.dll
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\Xamarin.Android.Support.v7.AppCompat.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.Runtime.Serialization.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\assemblies\System.ServiceModel.Internals.dll

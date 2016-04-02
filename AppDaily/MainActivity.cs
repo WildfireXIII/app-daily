@@ -5,13 +5,17 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Support.V4.App;
+using Android.Support.V7;
+using Android.Support.V7.App;
 
 using System.IO;
 
 namespace AppDaily
 {
 	[Activity(Label = "AppDaily", MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity : Activity
+	//public class MainActivity : Activity
+	public class MainActivity : AppCompatActivity
 	{
 		int count = 1;
 
@@ -21,6 +25,8 @@ namespace AppDaily
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
+			Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.appToolbar);
+			SetSupportActionBar(toolbar);
 
 			// Get our button from the layout resource,
 			// and attach an event to it
