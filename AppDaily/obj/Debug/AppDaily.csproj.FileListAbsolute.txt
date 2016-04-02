@@ -1,0 +1,15 @@
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.dll
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.pdb
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.AppDaily.apk
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.AppDaily-Signed.apk
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.csprojResolveAssemblyReference.cache
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.dll
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.pdb
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\android\bin\AppDaily.AppDaily.apk
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\layout\main.xml
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\values\strings.xml
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\drawable\icon.png
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\R.cs.flag
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\uploadflags.txt
+C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.dll.mdb
+C:\dwl\lab\AppDaily\AppDaily\bin\Debug\AppDaily.dll.mdb
