@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<Button  
-    android:id="@+id/MyButton"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/Hello"
-    />
-</LinearLayout>
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <!--<Button
+			android:id="@+id/MyButton"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/Hello" />-->
+    <!--<Label
+			android:id="@+id/lblProjects"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Hi" />-->
+        <TextView
+            android:id="@+id/txtProject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project: Nurielite"
+            android:textSize="30.0sp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/txtStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Study: Game Theory"
+            android:textSize="30.0sp"
+            android:textColor="#FFFFFF"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/txtExtraStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extra Study: Pyschology"
+            android:textSize="25.0sp"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/txtActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity: Find random wikipedia article"
+            android:textSize="25.0sp"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/txtQuote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quote: 'Stay positive!' - Kyle Mendoza"
+            android:textSize="25.0sp"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/txtFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fact: David Hume - goal was to abolish idea of absolute certainty. There are relations of ideas, such as logic, defintions, math, and matters of fact, similar to John Locke's sense impressions."
+            android:textSize="25.0sp"
+            android:layout_margin="20dp" />
+    </LinearLayout>
+</ScrollView>

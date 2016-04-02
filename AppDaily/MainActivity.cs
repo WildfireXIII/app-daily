@@ -24,26 +24,25 @@ namespace AppDaily
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button>(Resource.Id.MyButton);
+			//Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-			button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+			//button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
 
-			// first see if we can find the data files 
-			//Context context = this.ApplicationContext;
+			TextView tv = FindViewById<TextView>(Resource.Id.txtProject);
+			tv.Text = "Project: AppDaily";
 
+			// first set up any data files that are missing
 			string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 			Directory.SetCurrentDirectory(documentsPath);
 
-			//button.Text = Directory.GetCurrentDirectory(); 
-			if (!File.Exists("./CurrentData.dat"))
-			{
-				button.Text = "Nothing found yet";
-				File.Create("./CurrentData.dat");
-			}
-			else
-			{
-				button.Text = "Found the data!";
-			}
+			// TODO: this really belongs wherever the files are actually called.
+			/*if (!File.Exists("CurrentData.dat")) { File.Create("CurrentData.dat"); }
+			if (!File.Exists("Projects.dat")) { File.Create("Projects.dat"); }
+			if (!File.Exists("Studies.dat")) { File.Create("Studies.dat"); }
+			if (!File.Exists("ExtraStudies.dat")) { File.Create("ExtraStudies.dat"); }
+			if (!File.Exists("Activities.dat")) { File.Create("Activities.dat"); }
+			if (!File.Exists("Quotes.dat")) { File.Create("Quotes.dat"); }
+			if (!File.Exists("Facts.dat")) { File.Create("Facts.dat"); }*/
 		}
 	}
 }
