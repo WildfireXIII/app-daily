@@ -2,4 +2,13 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">AppDaily</string>
+
+	<string-array name="navigation_drawer_items_array">
+		<item>Projects</item>
+		<item>Studies</item>
+		<item>Extra Studies</item>
+		<item>Activities</item>
+		<item>Quotes</item>
+		<item>Facts</item>
+	</string-array>
 </resources>

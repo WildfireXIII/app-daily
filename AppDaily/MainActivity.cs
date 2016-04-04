@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7;
 using Android.Support.V7.App;
+using Android.Support.V4.Widget;
 
 using System.IO;
 
@@ -17,16 +18,33 @@ namespace AppDaily
 	//public class MainActivity : Activity
 	public class MainActivity : AppCompatActivity
 	{
-		int count = 1;
+		private string[] m_navTitles;
+		private DrawerLayout m_drawerLayout;
+		private ListView m_drawerList;
 
+	
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
+
+			// set the main toolbar of the app
 			Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.appToolbar);
 			SetSupportActionBar(toolbar);
+
+			// initialize the drawer list variables
+			m_navTitles = new string[] { "Projects", "Studies", "Extra Studies", "Activities", "Quotes", "Facts" };
+			//m_navTitles = Resources.GetStringArray(Resource.Array.navigation_drawer_items_array);
+			m_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.appDrawerLayout);
+			m_drawerList = FindViewById<ListView>(Resource.Id.appDrawerList);
+			
+			//m_drawerList.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, m_navTitles);
+			m_drawerList.Adapter = new DrawerItemCustomAdapter(this, Resource.Layout.ListViewItemRow, m_navTitles);
+			//m_drawerList.OnItemClickListener = new DrawerLayout
+
+
 
 			// Get our button from the layout resource,
 			// and attach an event to it
