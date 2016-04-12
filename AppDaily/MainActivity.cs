@@ -45,10 +45,12 @@ namespace AppDaily
 			m_drawerList.ItemClick += (object sender, Android.Widget.AdapterView.ItemClickEventArgs e) =>
 			{
 				int choice = e.Position;
+				Android.App.Fragment frag = null;
 				switch (choice)
 				{
 					case 0:
 						toolbar.Title = "Edit Projects";
+						frag = new CreateFragment();
 						break;
 					case 1:
 						toolbar.Title = "Edit Studies";
@@ -68,6 +70,12 @@ namespace AppDaily
 					default:
 						toolbar.Title = "AppDaily";
 						break;
+				}
+
+				if (frag != null)
+				{
+					Android.App.FragmentManager fragmentManager = GetFragmentManager();
+					fragmentManager.BeginTransaction().replace(Resource.Id.appScrollViewContent, frag).Commit();
 				}
 				m_drawerLayout.CloseDrawer(m_drawerList);
 			};
