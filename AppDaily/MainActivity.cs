@@ -42,6 +42,35 @@ namespace AppDaily
 			
 			//m_drawerList.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, m_navTitles);
 			m_drawerList.Adapter = new DrawerItemCustomAdapter(this, Resource.Layout.ListViewItemRow, m_navTitles);
+			m_drawerList.ItemClick += (object sender, Android.Widget.AdapterView.ItemClickEventArgs e) =>
+			{
+				int choice = e.Position;
+				switch (choice)
+				{
+					case 0:
+						toolbar.Title = "Edit Projects";
+						break;
+					case 1:
+						toolbar.Title = "Edit Studies";
+						break;
+					case 2:
+						toolbar.Title = "Edit Extra Studies";
+						break;
+					case 3:
+						toolbar.Title = "Edit Activities";
+						break;
+					case 4:
+						toolbar.Title = "Edit Quotes";
+						break;
+					case 5:
+						toolbar.Title = "Edit Facts";
+						break;
+					default:
+						toolbar.Title = "AppDaily";
+						break;
+				}
+				m_drawerLayout.CloseDrawer(m_drawerList);
+			};
 			//m_drawerList.OnItemClickListener = new DrawerLayout
 
 
