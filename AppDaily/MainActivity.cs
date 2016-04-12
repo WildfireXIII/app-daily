@@ -50,7 +50,8 @@ namespace AppDaily
 				{
 					case 0:
 						toolbar.Title = "Edit Projects";
-						frag = new CreateFragment();
+						//frag = new CreateFragment();
+						SetContentView(Resource.Layout.FragmentProjects);
 						break;
 					case 1:
 						toolbar.Title = "Edit Studies";
@@ -74,8 +75,9 @@ namespace AppDaily
 
 				if (frag != null)
 				{
-					Android.App.FragmentManager fragmentManager = GetFragmentManager();
-					fragmentManager.BeginTransaction().replace(Resource.Id.appScrollViewContent, frag).Commit();
+					Android.App.FragmentManager fragmentManager = this.FragmentManager; 
+
+					//fragmentManager.BeginTransaction().Replace(Resource.Id.appFrameContent, frag).Commit();
 				}
 				m_drawerLayout.CloseDrawer(m_drawerList);
 			};
