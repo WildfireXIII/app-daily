@@ -45,43 +45,52 @@ namespace AppDaily
 			m_drawerList.ItemClick += (object sender, Android.Widget.AdapterView.ItemClickEventArgs e) =>
 			{
 				int choice = e.Position;
-				Android.App.Fragment frag = null;
+				Intent intent = new Intent(this, (new EditListActivity()).Class);
 				switch (choice)
 				{
 					case 0:
-						toolbar.Title = "Edit Projects";
+						//toolbar.Title = "Edit Projects";
 						//frag = new CreateFragment();
 						//SetContentView(Resource.Layout.FragmentProjects);
-						Intent intent = new Intent(this, (new EditListActivity()).Class);
-						intent.PutExtra("ListName", "projects");
+						intent.PutExtra("ListName", "Projects");
 						StartActivity(intent);
 						break;
 					case 1:
-						toolbar.Title = "Edit Studies";
+						//toolbar.Title = "Edit Studies";
+						intent.PutExtra("ListName", "Studies");
+						StartActivity(intent);
 						break;
 					case 2:
-						toolbar.Title = "Edit Extra Studies";
+						//toolbar.Title = "Edit Extra Studies";
+						intent.PutExtra("ListName", "Extra Studies");
+						StartActivity(intent);
 						break;
 					case 3:
-						toolbar.Title = "Edit Activities";
+						//toolbar.Title = "Edit Activities";
+						intent.PutExtra("ListName", "Activities");
+						StartActivity(intent);
 						break;
 					case 4:
-						toolbar.Title = "Edit Quotes";
+						//toolbar.Title = "Edit Quotes";
+						intent.PutExtra("ListName", "Quotes");
+						StartActivity(intent);
 						break;
 					case 5:
-						toolbar.Title = "Edit Facts";
+						//toolbar.Title = "Edit Facts";
+						intent.PutExtra("ListName", "Facts");
+						StartActivity(intent);
 						break;
 					default:
-						toolbar.Title = "AppDaily";
+						//toolbar.Title = "AppDaily";
 						break;
 				}
 
-				if (frag != null)
+				/*if (frag != null)
 				{
 					Android.App.FragmentManager fragmentManager = this.FragmentManager; 
 
 					//fragmentManager.BeginTransaction().Replace(Resource.Id.appFrameContent, frag).Commit();
-				}
+				}*/
 				m_drawerLayout.CloseDrawer(m_drawerList);
 			};
 			//m_drawerList.OnItemClickListener = new DrawerLayout

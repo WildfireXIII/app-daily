@@ -28,15 +28,24 @@ namespace AppDaily
 			Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.elToolbar);
 			SetSupportActionBar(toolbar);
 			this.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-			
+
 			// Create your application here
+			Intent intent = this.Intent;
+			string listName = intent.GetStringExtra("ListName");
+
+			toolbar.Title = "Edit " + listName;
+			SetSupportActionBar(toolbar);
+
+			TextView tv = FindViewById<TextView>(Resource.Id.txtLabel1313);
+			tv.Text = listName;
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
 			switch (item.ItemId)
 			{
-				case Resource.Id.home:
+				case Android.Resource.Id.Home:
+					Console.WriteLine("Specifically the home/up button");
 					this.Finish();	
 					return true;
 			}

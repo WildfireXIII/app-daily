@@ -4,7 +4,7 @@
 	android:layout_height="wrap_content"
 	android:background="?android:attr/activatedBackgroundIndicator"
 	android:minHeight="?android:attr/listPreferredItemHeightSmall"
-	android:padding="10dp">
+	android:padding="20dp">
 	
 	<TextView
 		android:id="@+id/textViewName"
@@ -13,6 +13,8 @@
 		android:layout_centerVertical="true"
 		android:text="Text here"
 		android:textColor="#ffffff"
+		android:textSize="20dp"
+		android:layout_marginBottom="20dp"
 		/>
 	
 </RelativeLayout>
