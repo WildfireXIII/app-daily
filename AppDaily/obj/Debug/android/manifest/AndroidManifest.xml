@@ -4,7 +4,8 @@
   <uses-sdk android:minSdkVersion="16" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <application android:label="AppDaily" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:name="mono.android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
+  <application android:label="AppDaily" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:name="mono.android.app.Application" android:allowBackup="true" android:debuggable="true">
+    <activity android:label="EditListActivity" android:name="md55704cd22355e30f9c2c50b338543a82d.EditListActivity" />
     <activity android:icon="@drawable/icon" android:label="AppDaily" android:name="md55704cd22355e30f9c2c50b338543a82d.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -20,4 +21,5 @@
       </intent-filter>
     </receiver>
   </application>
+  <activity android:name="MainActivity"></activity>
 </manifest>

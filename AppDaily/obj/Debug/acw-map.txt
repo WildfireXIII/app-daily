@@ -6,6 +6,10 @@ AppDaily.DrawerItemCustomAdapter, AppDaily;md55704cd22355e30f9c2c50b338543a82d.D
 AppDaily.DrawerItemCustomAdapter, AppDaily, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55704cd22355e30f9c2c50b338543a82d.DrawerItemCustomAdapter
 AppDaily.DrawerItemCustomAdapter;md55704cd22355e30f9c2c50b338543a82d.DrawerItemCustomAdapter
 appdaily.DrawerItemCustomAdapter;md55704cd22355e30f9c2c50b338543a82d.DrawerItemCustomAdapter
+AppDaily.EditListActivity, AppDaily;md55704cd22355e30f9c2c50b338543a82d.EditListActivity
+AppDaily.EditListActivity, AppDaily, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55704cd22355e30f9c2c50b338543a82d.EditListActivity
+AppDaily.EditListActivity;md55704cd22355e30f9c2c50b338543a82d.EditListActivity
+appdaily.EditListActivity;md55704cd22355e30f9c2c50b338543a82d.EditListActivity
 AppDaily.MainActivity, AppDaily;md55704cd22355e30f9c2c50b338543a82d.MainActivity
 AppDaily.MainActivity, AppDaily, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55704cd22355e30f9c2c50b338543a82d.MainActivity
 AppDaily.MainActivity;md55704cd22355e30f9c2c50b338543a82d.MainActivity

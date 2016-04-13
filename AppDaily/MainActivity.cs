@@ -51,7 +51,10 @@ namespace AppDaily
 					case 0:
 						toolbar.Title = "Edit Projects";
 						//frag = new CreateFragment();
-						SetContentView(Resource.Layout.FragmentProjects);
+						//SetContentView(Resource.Layout.FragmentProjects);
+						Intent intent = new Intent(this, (new EditListActivity()).Class);
+						intent.PutExtra("ListName", "projects");
+						StartActivity(intent);
 						break;
 					case 1:
 						toolbar.Title = "Edit Studies";

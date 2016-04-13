@@ -2,4 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="AppDaily.AppDaily" android:versionCode="1" android:versionName="1.0">
   <uses-sdk android:minSdkVersion="16" />
   <application android:label="AppDaily" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></application>
+	<activity
+	  android:name="MainActivity"></activity>
 </manifest>
