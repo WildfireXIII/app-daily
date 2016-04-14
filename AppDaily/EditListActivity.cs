@@ -36,8 +36,19 @@ namespace AppDaily
 			toolbar.Title = "Edit " + listName;
 			SetSupportActionBar(toolbar);
 
-			TextView tv = FindViewById<TextView>(Resource.Id.txtLabel1313);
-			tv.Text = listName;
+			//TextView tv = FindViewById<TextView>(Resource.Id.txtLabel1313);
+			//tv.Text = listName;
+
+
+			//string[] m_items = new string[] { "thign1", "thing2", "thing3 and more stuff" };
+			List<string> m_items = new List<string>();
+			m_items.Add("thing1");
+			m_items.Add("thing2");
+			m_items.Add("thing3 and more stuff");
+			
+			ListView lv = FindViewById<ListView>(Resource.Id.elItemList);
+			//lv.Adapter = new ItemCustomAdapater(this, Resource.Layout.ItemRow, m_items.ToArray(), m_items, lv);
+			lv.Adapter = new ItemCustomAdapater(this, Resource.Layout.ItemRow, m_items);
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
