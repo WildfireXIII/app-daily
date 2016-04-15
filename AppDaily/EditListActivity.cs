@@ -71,7 +71,7 @@ namespace AppDaily
 			if (m_listType == "Projects") { m_listFileURL = "Projects.dat"; }
 			else if (m_listType == "Studies") { m_listFileURL = "Studies.dat"; }
 			else if (m_listType == "Extra Studies") { m_listFileURL = "ExtraStudies.dat"; }
-			else if (m_listType == "Activities") { m_listFileURL = "Activites.dat"; }
+			else if (m_listType == "Activities") { m_listFileURL = "Activities.dat"; }
 			else if (m_listType == "Quotes") { m_listFileURL = "Quotes.dat"; }
 			else if (m_listType == "Facts") { m_listFileURL = "Facts.dat"; }
 
