@@ -61,5 +61,7 @@ namespace AppDaily
 			m_data.Add(content);
 			NotifyDataSetChanged();
 		}
+
+		public List<string> getList() { return m_data; } 
 	}
 }
