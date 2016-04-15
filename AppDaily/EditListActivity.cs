@@ -36,19 +36,27 @@ namespace AppDaily
 			toolbar.Title = "Edit " + listName;
 			SetSupportActionBar(toolbar);
 
-			//TextView tv = FindViewById<TextView>(Resource.Id.txtLabel1313);
-			//tv.Text = listName;
-
-
-			//string[] m_items = new string[] { "thign1", "thing2", "thing3 and more stuff" };
 			List<string> m_items = new List<string>();
 			m_items.Add("thing1");
 			m_items.Add("thing2");
 			m_items.Add("thing3 and more stuff");
 			
 			ListView lv = FindViewById<ListView>(Resource.Id.elItemList);
-			//lv.Adapter = new ItemCustomAdapater(this, Resource.Layout.ItemRow, m_items.ToArray(), m_items, lv);
-			lv.Adapter = new ItemCustomAdapater(this, Resource.Layout.ItemRow, m_items);
+			ItemCustomAdapater adapter = new ItemCustomAdapater(this, Resource.Layout.ItemRow, m_items);
+			lv.Adapter = adapter;
+
+			// handle the add button
+			Button addButton = FindViewById<Button>(Resource.Id.btnAddItem);
+			addButton.Click += delegate
+			{
+				// get edittext content
+				EditText txt = FindViewById<EditText>(Resource.Id.txtNewItem);
+
+				string content = txt.Text;
+				/*adapter.Add(content);
+				adapter.NotifyDataSetChanged();*/
+				adapter.addItem(content);
+			};
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -57,6 +65,9 @@ namespace AppDaily
 			{
 				case Android.Resource.Id.Home:
 					Console.WriteLine("Specifically the home/up button");
+
+					// todo: save current list state here (method in adapter?)
+					
 					this.Finish();	
 					return true;
 			}

@@ -54,5 +54,12 @@ namespace AppDaily
 			m_data.RemoveAt(pos);
 			NotifyDataSetChanged();
 		}
+
+		public void addItem(string content)
+		{
+			Add(content);
+			m_data.Add(content);
+			NotifyDataSetChanged();
+		}
 	}
 }
