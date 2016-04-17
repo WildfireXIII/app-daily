@@ -2,16 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="AppDaily.AppDaily" android:versionCode="1" android:versionName="1.0">
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="16" />
+  <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:label="AppDaily" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:name="mono.android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="EditListActivity" android:name="md55704cd22355e30f9c2c50b338543a82d.EditListActivity" />
+    <receiver android:name="md55704cd22355e30f9c2c50b338543a82d.HourlyAlarm" />
+    <service android:name="md55704cd22355e30f9c2c50b338543a82d.HourlyIntentService" />
+    <service android:name="md55704cd22355e30f9c2c50b338543a82d.HourlyService" />
     <activity android:icon="@drawable/icon" android:label="AppDaily" android:name="md55704cd22355e30f9c2c50b338543a82d.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <service android:name="md55704cd22355e30f9c2c50b338543a82d.RandomizationServiceHourly" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="AppDaily.AppDaily.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">
@@ -22,4 +27,10 @@
     </receiver>
   </application>
   <activity android:name="MainActivity"></activity>
+  <receiver android:process=":remote" android:name=".HourlyAlarm"></receiver>
+  <!--<service
+		android:name=".HourlyService"
+		android:enabled="true"
+		android:process=":hourly_service">
+	</service>-->
 </manifest>

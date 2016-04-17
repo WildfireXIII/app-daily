@@ -60,8 +60,12 @@
     <Compile Include="CreateFragment.cs" />
     <Compile Include="DrawerItemCustomAdapter.cs" />
     <Compile Include="EditListActivity.cs" />
+    <Compile Include="HourlyAlarm.cs" />
+    <Compile Include="HourlyIntentService.cs" />
+    <Compile Include="HourlyService.cs" />
     <Compile Include="ItemCustomAdapater.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="RandomizationServiceHourly.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
