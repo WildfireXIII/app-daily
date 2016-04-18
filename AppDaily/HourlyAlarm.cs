@@ -12,6 +12,7 @@ using Android.Widget;
 
 using System.IO;
 
+
 namespace AppDaily
 {
 	// thanks to http://stackoverflow.com/questions/4459058/alarm-manager-example
@@ -26,23 +27,37 @@ namespace AppDaily
 			wl.Acquire();
 
 			onWakeInitializationProtocol();
-			
 
-			/*
-			Notification.Builder notifBuilder = new Notification.Builder(context);
-			notifBuilder.SetContentTitle("Service msg");
-			notifBuilder.SetContentText("Here's your hourly reminder! Oh yeah!");
-			notifBuilder.SetSmallIcon(Resource.Drawable.Icon);
-			notifBuilder.SetVibrate(new long[] { 500, 50, 500, 100 });
-			notifBuilder.SetTicker("HEY YOU! YOU HAVE A NOTIFICATION!");
-			notifBuilder.SetVisibility(NotificationVisibility.Public);
-			notifBuilder.SetPriority((int)NotificationPriority.Default);
-			notifBuilder.SetContentIntent(PendingIntent.GetActivity(context, 0, new Intent(context, typeof(MainActivity)), 0));
+			// figure out current time
+			DateTime now = DateTime.Now;
 
-			Notification notif = notifBuilder.Build();
-			NotificationManager notifManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
-			notifManager.Notify((int)Java.Lang.JavaSystem.CurrentTimeMillis(), notif); // using time to make a different ID every time, so doesn't replace old notification 
-			*/
+			// Only notifications between 9am and 11pm
+			// 9 = 8, 11 = 22
+			// conditions with tolerance 
+			bool timeConditionAt9 = ((now.Hour == 7 && now.Minute > 55) || (now.Hour == 8 && now.Minute < 5));
+			bool timeConditionPast9 = ((now.Hour > 7 && now.Minute > 55) || now.Hour >= 8);
+			bool timeConditionBefore11 = (now.Hour < 22 || (now.Hour == 22 && now.Minute < 5));
+
+			// DEBUG
+			timeConditionAt9 = true;
+			timeConditionPast9 = true;
+			timeConditionBefore11 = true;
+
+			if (timeConditionPast9 && timeConditionBefore11)
+			{
+				randomizeQuoteFact();
+				if (timeConditionAt9) { randomizeAllElse(); }
+
+				List<string> current = getCurrent();
+				displayNotification(context, "Quote", current[4]);
+				displayNotification(context, "Fact", current[5]);
+
+				if (timeConditionAt9)
+				{
+					string dayProjects = current[0] + ", " + current[1] + ", " + current[2] + ", " + current[3];
+					displayNotification(context, "Daily Projects", dayProjects);
+				}
+			}
 
 			wl.Release();
 		}
@@ -51,6 +66,23 @@ namespace AppDaily
 		{
 			_initCWD();
 			_verify();
+		}
+
+		private void displayNotification(Context context, string title, string msg)
+		{
+			Notification.Builder notifBuilder = new Notification.Builder(context);
+			notifBuilder.SetContentTitle(title);
+			notifBuilder.SetContentText(msg);
+			notifBuilder.SetSmallIcon(Resource.Drawable.Icon);
+			notifBuilder.SetVibrate(new long[] { 100, 20, 100, 20, 100, 20, 100, 20 });
+			notifBuilder.SetVisibility(NotificationVisibility.Public);
+			notifBuilder.SetPriority((int)NotificationPriority.Default);
+			notifBuilder.SetContentIntent(PendingIntent.GetActivity(context, 0, new Intent(context, typeof(MainActivity)), 0));
+			notifBuilder.SetStyle(new Notification.BigTextStyle().BigText(msg));
+
+			Notification notification = notifBuilder.Build();
+			NotificationManager notifManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
+			notifManager.Notify((int)Java.Lang.JavaSystem.CurrentTimeMillis(), notification); // using time to make a different ID every time, so doesn't replace old notification
 		}
 
 		private void randomizeQuoteFact()
@@ -126,13 +158,22 @@ namespace AppDaily
 			
 			PendingIntent pendingIntent = PendingIntent.GetBroadcast(context, 0, intent, 0);
 
-			DateTime futureDateTime = DateTime.Now;
-			futureDateTime = futureDateTime.AddMinutes(1);
-			DateTime betterDT = new DateTime(futureDateTime.Year, futureDateTime.Month, futureDateTime.Day, futureDateTime.Hour, futureDateTime.Minute, 0, 0);
+			/*
+			DateTime onHour = DateTime.Now;
+			onHour = onHour.AddHours(1);
+			onHour = new DateTime(onHour.Year, onHour.Month, onHour.Day, onHour.Hour, 0, 0, 0);
+			*/
+			
+			// DEBUG
+			///*
+			DateTime onHour = DateTime.Now;
+			onHour = onHour.AddMinutes(1);
+			onHour = new DateTime(onHour.Year, onHour.Month, onHour.Day, onHour.Hour, onHour.Minute, 0, 0);
+			//*/
 
-			long ms = getMS(betterDT);
+			long ms = getMS(onHour);
 
-			am.SetInexactRepeating(AlarmType.RtcWakeup, ms, 1000 * 60, pendingIntent);
+			am.SetInexactRepeating(AlarmType.RtcWakeup, ms, 1000*60, pendingIntent);
 		}
 
 		// also converts to utc and based on unix time

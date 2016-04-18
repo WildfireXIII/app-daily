@@ -126,7 +126,7 @@ namespace AppDaily
 			verify();
 
 			// set up current data (at some point check for when this has been done (run in background?)
-			randomizeAllCurrent();
+			//randomizeAllCurrent();
 			List<string> current = getCurrent();
 			TextView tvProj = FindViewById<TextView>(Resource.Id.txtProject);
 			tvProj.Text = "Project: " + current[0];
@@ -144,7 +144,7 @@ namespace AppDaily
 
 			// notification testing
 
-			Notification.Builder notifBuilder = new Notification.Builder(this);
+			/*Notification.Builder notifBuilder = new Notification.Builder(this);
 			notifBuilder.SetContentTitle("Message from my app!");
 			notifBuilder.SetContentText("Hello notifications world!");
 			notifBuilder.SetSmallIcon(Resource.Drawable.Icon);
@@ -156,7 +156,7 @@ namespace AppDaily
 
 			Notification notif = notifBuilder.Build();
 			NotificationManager notifManager = (NotificationManager)GetSystemService(Context.NotificationService);
-			notifManager.Notify(0, notif);
+			notifManager.Notify(0, notif);*/
 
 			StartService(new Intent(this, typeof(HourlyService)));
 			
