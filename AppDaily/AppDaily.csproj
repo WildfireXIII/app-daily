@@ -57,15 +57,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateFragment.cs" />
     <Compile Include="DrawerItemCustomAdapter.cs" />
     <Compile Include="EditListActivity.cs" />
     <Compile Include="HourlyAlarm.cs" />
-    <Compile Include="HourlyIntentService.cs" />
     <Compile Include="HourlyService.cs" />
     <Compile Include="ItemCustomAdapater.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="RandomizationServiceHourly.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,9 +97,6 @@
     <AndroidResource Include="Resources\layout\ListViewItemRow.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\FragmentProjects.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

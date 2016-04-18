@@ -14,7 +14,6 @@ C:\dwl\lab\AppDaily\AppDaily\obj\Debug\uploadflags.txt
 C:\dwl\lab\AppDaily\AppDaily\bin\Debug\Xamarin.Android.Support.v4.dll
 C:\dwl\lab\AppDaily\AppDaily\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\layout\listviewitemrow.xml
-C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\layout\fragmentprojects.xml
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\layout\editlistlayout.xml
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\res\layout\itemrow.xml
 C:\dwl\lab\AppDaily\AppDaily\obj\Debug\AppDaily.dll.mdb

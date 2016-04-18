@@ -54,7 +54,8 @@ namespace AppDaily
 		public List<string> getCurrent()
 		{
 			List<string> current = File.ReadAllLines("Current.dat").ToList();
-			//if (current.Count < 6) { while (current.Count < 6) { current.Add("NO ITEMS"); } }
+			
+			// handle any empty stuff in list
 			for (int i = 0; i < current.Count; i++)
 			{
 				if (current[i] == null || current[i] == "") { current[i] = "NO ITEMS"; }
@@ -142,12 +143,6 @@ namespace AppDaily
 
 
 			// notification testing
-			/*NotificationManager notifManager = (NotificationManager)GetSystemService(NotificationService);
-			Notification notif = new Notification(Resource.Drawable.Icon, "Hello notifications world!");
-			PendingIntent notifIntent = PendingIntent.GetActivity(this, 0, new Intent(this, typeof(MainActivity)), 0);
-			Java.Lang.ICharSequence titleConverted = new Java.Lang.String("message from app");
-			notif.SetLatestEventInfo(this, titleConverted, notif.TickerText, notifIntent);
-			notifManager.Notify(0, notif);*/
 
 			Notification.Builder notifBuilder = new Notification.Builder(this);
 			notifBuilder.SetContentTitle("Message from my app!");
@@ -163,34 +158,9 @@ namespace AppDaily
 			NotificationManager notifManager = (NotificationManager)GetSystemService(Context.NotificationService);
 			notifManager.Notify(0, notif);
 
-			//StartService(new Intent(this, typeof(RandomizationServiceHourly)));
 			StartService(new Intent(this, typeof(HourlyService)));
-			//StartFo
-
-			/*new Thread(new ThreadStart(() =>
-			{
-				StartService(new Intent(this, typeof(HourlyService)));
-			})).Start();*/
-
-			//StartService(new Intent();
-
-			//StartService(new Intent(this, typeof(HourlyIntentService)));
 			
 			Console.WriteLine("Should have just started service");
-
-			
-			//////////
-			/*
-			AlarmManager am = (AlarmManager)GetSystemService(Context.AlarmService);
-			Intent intent2 = new Intent(this, typeof(HourlyAlarm));
-			//PendingIntent pendingIntent = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent);
-			PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent2, 0);
-			//am.SetInexactRepeating(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis(), 1000 * 10, pendingIntent);
-
-			
-			
-			
-			am.SetRepeating(AlarmType.RtcWakeup, 0, 1000, pendingIntent);*/
 		}
 
 		private void verify()
