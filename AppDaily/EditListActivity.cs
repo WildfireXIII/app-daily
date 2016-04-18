@@ -59,6 +59,8 @@ namespace AppDaily
 				string content = txt.Text;
 				m_adapter.addItem(content);
 
+				File.WriteAllLines(m_listFileURL, m_adapter.getList());
+
 				// clear edittext content
 				txt.Text = "";
 			};

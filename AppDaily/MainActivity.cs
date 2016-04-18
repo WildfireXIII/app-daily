@@ -81,7 +81,21 @@ namespace AppDaily
 			{
 				randomizeAllCurrent();
 				displayCurrentData();
-			}; 
+			};
+
+			Button backupButton = FindViewById<Button>(Resource.Id.btnBackup);
+			backupButton.Click += delegate 
+			{ 
+				backupLists();
+				Toast.MakeText(this, "Backed up files to /storage/emulated/0/Android/data/AppDaily.AppDaily/files/AppDaily", ToastLength.Long).Show();
+			};
+			
+			Button restoreButton = FindViewById<Button>(Resource.Id.btnRestore);
+			restoreButton.Click += delegate 
+			{ 
+				restoreLists(); 
+				Toast.MakeText(this, "Restored files from shared storage folder", ToastLength.Long).Show();
+			};
 
 			// initialize the drawer list variables
 			m_navTitles = new string[] { "Projects", "Studies", "Extra Studies", "Activities", "Quotes", "Facts" };
@@ -131,7 +145,6 @@ namespace AppDaily
 			// first set up any data files that are missing
 			setCWDToPersonal();
 			verify();
-			backupLists();
 
 			displayCurrentData();
 
@@ -173,6 +186,19 @@ namespace AppDaily
 			File.Copy("Activities.dat", path + "/Activities.dat", true);
 			File.Copy("Quotes.dat", path + "/Quotes.dat", true);
 			File.Copy("Facts.dat", path + "/Facts.dat", true);
+		}
+
+		private void restoreLists()
+		{
+			string path = this.GetExternalFilesDir(null).AbsolutePath;
+
+			path += "/AppDaily";
+			File.Copy(path + "/Projects.dat", "Projects.dat", true);
+			File.Copy(path + "/Studies.dat", "Studies.dat", true);
+			File.Copy(path + "/ExtraStudies.dat", "ExtraStudies.dat", true);
+			File.Copy(path + "/Activities.dat", "Activities.dat", true);
+			File.Copy(path + "/Quotes.dat", "Quotes.dat", true);
+			File.Copy(path + "/Facts.dat", "Facts.dat", true);
 		}
 
 		private void verify()

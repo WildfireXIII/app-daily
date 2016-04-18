@@ -31,12 +31,10 @@ namespace AppDaily
 			// figure out current time
 			DateTime now = DateTime.Now;
 
-			// Only notifications between 9am and 11pm
-			// 9 = [8], 11 = [22]
-			// conditions with tolerance 
-			bool timeConditionAt9 = ((now.Hour == 7 && now.Minute > 55) || (now.Hour == 8 && now.Minute < 5));
-			bool timeConditionPast9 = ((now.Hour == 7 && now.Minute > 55) || now.Hour >= 8);
-			bool timeConditionBefore11 = (now.Hour < 22 || (now.Hour == 22 && now.Minute < 5));
+			// Only notifications between 8am and 11pm
+			bool timeConditionAt8 = ((now.Hour == 7 && now.Minute > 55) || (now.Hour == 8 && now.Minute < 5));
+			bool timeConditionPast8 = ((now.Hour == 7 && now.Minute > 55) || now.Hour >= 8);
+			bool timeConditionBefore11 = (now.Hour < 23 || (now.Hour == 23 && now.Minute < 5));
 
 			// DEBUG
 			/*
@@ -45,16 +43,16 @@ namespace AppDaily
 			timeConditionBefore11 = true;
 			*/
 
-			if (timeConditionPast9 && timeConditionBefore11)
+			if (timeConditionPast8 && timeConditionBefore11)
 			{
 				randomizeQuoteFact();
-				if (timeConditionAt9) { randomizeAllElse(); }
+				if (timeConditionAt8) { randomizeAllElse(); }
 
 				List<string> current = getCurrent();
 				displayNotification(context, "Quote", current[4]);
 				displayNotification(context, "Fact", current[5]);
 
-				if (timeConditionAt9)
+				if (timeConditionAt8)
 				{
 					string dayProjects = current[0] + ", " + current[1] + ", " + current[2] + ", " + current[3];
 					displayNotification(context, "Daily Projects", dayProjects);
