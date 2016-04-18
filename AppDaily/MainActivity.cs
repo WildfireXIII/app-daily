@@ -18,7 +18,7 @@ using System.Threading;
 
 namespace AppDaily
 {
-	[Activity(Label = "AppDaily", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity(Label = "AppDaily", MainLauncher = true, Icon = "@drawable/ColoredIcon")]
 	//public class MainActivity : Activity
 	public class MainActivity : AppCompatActivity
 	{
@@ -75,6 +75,14 @@ namespace AppDaily
 			Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.appToolbar);
 			SetSupportActionBar(toolbar);
 
+			// set up randomize button handler 
+			Button randomButton = FindViewById<Button>(Resource.Id.RandomizeButton);
+			randomButton.Click += delegate
+			{
+				randomizeAllCurrent();
+				displayCurrentData();
+			}; 
+
 			// initialize the drawer list variables
 			m_navTitles = new string[] { "Projects", "Studies", "Extra Studies", "Activities", "Quotes", "Facts" };
 			m_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.appDrawerLayout);
@@ -121,12 +129,17 @@ namespace AppDaily
 			tv.Text = "Project: AppDaily";
 
 			// first set up any data files that are missing
-			string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-			Directory.SetCurrentDirectory(documentsPath);
+			setCWDToPersonal();
 			verify();
+			backupLists();
 
-			// set up current data (at some point check for when this has been done (run in background?)
-			//randomizeAllCurrent();
+			displayCurrentData();
+
+			StartService(new Intent(this, typeof(HourlyService)));
+		}
+
+		private void displayCurrentData()
+		{
 			List<string> current = getCurrent();
 			TextView tvProj = FindViewById<TextView>(Resource.Id.txtProject);
 			tvProj.Text = "Project: " + current[0];
@@ -140,27 +153,26 @@ namespace AppDaily
 			tvQuotes.Text = "Quote: " + current[4];
 			TextView tvFacts = FindViewById<TextView>(Resource.Id.txtFact);
 			tvFacts.Text = "Fact: " + current[5];
+		}
 
+		private void setCWDToPersonal()
+		{
+			string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+			Directory.SetCurrentDirectory(documentsPath);
+		} 
 
-			// notification testing
+		private void backupLists()
+		{
+			string path = this.GetExternalFilesDir(null).AbsolutePath;
 
-			/*Notification.Builder notifBuilder = new Notification.Builder(this);
-			notifBuilder.SetContentTitle("Message from my app!");
-			notifBuilder.SetContentText("Hello notifications world!");
-			notifBuilder.SetSmallIcon(Resource.Drawable.Icon);
-			notifBuilder.SetVibrate(new long[] { 500, 100, 500, 100 });
-			notifBuilder.SetTicker("HEY YOU! YOU HAVE A NOTIFICATION!");
-			notifBuilder.SetVisibility(NotificationVisibility.Public);
-			notifBuilder.SetPriority((int)NotificationPriority.Default);
-			notifBuilder.SetContentIntent(PendingIntent.GetActivity(this, 0, new Intent(this, typeof(MainActivity)), 0));
-
-			Notification notif = notifBuilder.Build();
-			NotificationManager notifManager = (NotificationManager)GetSystemService(Context.NotificationService);
-			notifManager.Notify(0, notif);*/
-
-			StartService(new Intent(this, typeof(HourlyService)));
-			
-			Console.WriteLine("Should have just started service");
+			if (!Directory.Exists(path + "/AppDaily")) { Directory.CreateDirectory(path + "/AppDaily"); }
+			path += "/AppDaily";
+			File.Copy("Projects.dat", path + "/Projects.dat", true);
+			File.Copy("Studies.dat", path + "/Studies.dat", true);
+			File.Copy("ExtraStudies.dat", path + "/ExtraStudies.dat", true);
+			File.Copy("Activities.dat", path + "/Activities.dat", true);
+			File.Copy("Quotes.dat", path + "/Quotes.dat", true);
+			File.Copy("Facts.dat", path + "/Facts.dat", true);
 		}
 
 		private void verify()

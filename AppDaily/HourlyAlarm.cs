@@ -32,16 +32,18 @@ namespace AppDaily
 			DateTime now = DateTime.Now;
 
 			// Only notifications between 9am and 11pm
-			// 9 = 8, 11 = 22
+			// 9 = [8], 11 = [22]
 			// conditions with tolerance 
 			bool timeConditionAt9 = ((now.Hour == 7 && now.Minute > 55) || (now.Hour == 8 && now.Minute < 5));
-			bool timeConditionPast9 = ((now.Hour > 7 && now.Minute > 55) || now.Hour >= 8);
+			bool timeConditionPast9 = ((now.Hour == 7 && now.Minute > 55) || now.Hour >= 8);
 			bool timeConditionBefore11 = (now.Hour < 22 || (now.Hour == 22 && now.Minute < 5));
 
 			// DEBUG
-			timeConditionAt9 = true;
+			/*
+			timeConditionAt9 = false;
 			timeConditionPast9 = true;
 			timeConditionBefore11 = true;
+			*/
 
 			if (timeConditionPast9 && timeConditionBefore11)
 			{
@@ -73,7 +75,8 @@ namespace AppDaily
 			Notification.Builder notifBuilder = new Notification.Builder(context);
 			notifBuilder.SetContentTitle(title);
 			notifBuilder.SetContentText(msg);
-			notifBuilder.SetSmallIcon(Resource.Drawable.Icon);
+			notifBuilder.SetSmallIcon(Resource.Drawable.WhiteIconPure);
+			notifBuilder.SetLargeIcon(Android.Graphics.BitmapFactory.DecodeResource(context.Resources, Resource.Drawable.ColoredIcon)); // thanks to http://stackoverflow.com/questions/16055073/set-drawable-or-bitmap-as-icon-in-notification-in-android
 			notifBuilder.SetVibrate(new long[] { 100, 20, 100, 20, 100, 20, 100, 20 });
 			notifBuilder.SetVisibility(NotificationVisibility.Public);
 			notifBuilder.SetPriority((int)NotificationPriority.Default);
@@ -147,33 +150,30 @@ namespace AppDaily
 			if (!File.Exists("Facts.dat")) { File.Create("Facts.dat"); }
 		}
 
-
-
 		// start the hourly part
 		public void SetAlarm(Context context)
 		{
-			Console.WriteLine("Setting alarm");
 			AlarmManager am = (AlarmManager)context.GetSystemService(Context.AlarmService);
 			Intent intent = new Intent(context, typeof(HourlyAlarm));
 			
 			PendingIntent pendingIntent = PendingIntent.GetBroadcast(context, 0, intent, 0);
 
-			/*
 			DateTime onHour = DateTime.Now;
 			onHour = onHour.AddHours(1);
 			onHour = new DateTime(onHour.Year, onHour.Month, onHour.Day, onHour.Hour, 0, 0, 0);
-			*/
+			long interval = 1000 * 60 * 60; // hour
 			
 			// DEBUG
-			///*
+			/*
 			DateTime onHour = DateTime.Now;
 			onHour = onHour.AddMinutes(1);
 			onHour = new DateTime(onHour.Year, onHour.Month, onHour.Day, onHour.Hour, onHour.Minute, 0, 0);
-			//*/
+			long interval = 1000 * 60; // minute
+			*/
 
 			long ms = getMS(onHour);
 
-			am.SetInexactRepeating(AlarmType.RtcWakeup, ms, 1000*60, pendingIntent);
+			am.SetInexactRepeating(AlarmType.RtcWakeup, ms, interval, pendingIntent);
 		}
 
 		// also converts to utc and based on unix time
@@ -187,15 +187,6 @@ namespace AppDaily
 			long actualTicks = timeTicksUTC - unixTicks;
 		
 			return actualTicks / TimeSpan.TicksPerMillisecond;
-		}
-
-		public void CancelAlarm(Context context)
-		{
-			/*Console.WriteLine("Canceling alarm");
-			Intent intent = new Intent(context, typeof(HourlyAlarm));
-			PendingIntent sender = PendingIntent.GetBroadcast(context, 0, intent, 0);
-			AlarmManager am = (AlarmManager)context.GetSystemService(Context.AlarmService);
-			am.Cancel(sender);*/
 		}
 	}
 }

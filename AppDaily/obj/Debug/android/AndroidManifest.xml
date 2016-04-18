@@ -9,7 +9,7 @@
     <activity android:label="EditListActivity" android:name="md55704cd22355e30f9c2c50b338543a82d.EditListActivity" />
     <receiver android:name="md55704cd22355e30f9c2c50b338543a82d.HourlyAlarm" />
     <service android:name="md55704cd22355e30f9c2c50b338543a82d.HourlyService" />
-    <activity android:icon="@drawable/icon" android:label="AppDaily" android:name="md55704cd22355e30f9c2c50b338543a82d.MainActivity">
+    <activity android:icon="@drawable/coloredicon" android:label="AppDaily" android:name="md55704cd22355e30f9c2c50b338543a82d.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

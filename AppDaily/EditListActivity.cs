@@ -58,6 +58,9 @@ namespace AppDaily
 
 				string content = txt.Text;
 				m_adapter.addItem(content);
+
+				// clear edittext content
+				txt.Text = "";
 			};
 		}
 
@@ -87,19 +90,10 @@ namespace AppDaily
 			switch (item.ItemId)
 			{
 				case Android.Resource.Id.Home:
-					Console.WriteLine("Specifically the home/up button");
-
-					// todo: save current list state here (method in adapter?)
-
 					File.WriteAllLines(m_listFileURL, m_adapter.getList());
 					this.Finish();	
 					return true;
 			}
-			/*if (item.ItemId == Resource.Id.home)
-			{
-				NavUtils.NavigateUpFromSameTask(this);
-				return true;
-			}*/
 			return base.OnOptionsItemSelected(item);
 		}
 	}
